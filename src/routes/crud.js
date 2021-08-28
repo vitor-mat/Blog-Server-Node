@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 
-app.use(expres.json())
+app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-const route = app.route();
+const route = require("express").Router();
 
-route.get("/post", (req, res) => {
+route.get("/posts", (req, res) => {
 
 })
 
