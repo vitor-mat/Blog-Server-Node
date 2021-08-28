@@ -1,8 +1,8 @@
 const { Sequelize } = require("sequelize");
 
-const connection = new Sequelize({
+const Connection = new Sequelize({
     dialect: 'sqlite',
-    storage: __dirname + "database.sqlite"
+    storage: __dirname + "/test/database.sqlite"
 });
 
-module.exports = connection;
+module.exports = Connection;
