@@ -3,8 +3,10 @@ const Posts = require("../models/posts");
 
 const route = require("express").Router();
 
-route.get("/Posts", (req, res) => {
+route.get("/Posts", async (req, res) => {
+    const myPosts = await Posts.findAll();
 
+    res.send(myPosts)
 })
 
 route.post("/add", async (req, res) => {
@@ -21,7 +23,7 @@ route.post("/add", async (req, res) => {
             mes: Number(monthNow)
         });
     
-        return res.send(newPosts)
+        return res.send("Sucesso ao cadastar os posts")
 
     }catch(error){
         console.log("Ocorreu este erro: "+error)
