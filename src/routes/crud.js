@@ -30,8 +30,22 @@ route.post("/add", async (req, res) => {
     }
 })
 
-route.put("/edit:id", (req, res) => {
+route.put("/edit/:id", async (req, res) => {
+    try{
+        const editToPost = await Posts.update({
+            title: req.body.title,
+            description: req.body.description,
+            content: req.body.content
+        },{
+            where:{
+                id: req.params.id
+            }
+        })
 
+        res.send("Editado com sucess!")
+    }catch(error){
+        res.send("Falha ao editar: "+error)
+    }
 })
 
 route.delete("/delete:id", (req, res) => {
