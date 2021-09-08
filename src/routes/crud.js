@@ -48,8 +48,18 @@ route.put("/edit/:id", async (req, res) => {
     }
 })
 
-route.delete("/delete:id", (req, res) => {
+route.delete("/delete/:id", async (req, res) => {
+    try{
+        const removePost = await Posts.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
 
+        res.send("Deletado com sucesso!")
+    }catch(error){
+        res.send("Falha ao Deletar: "+error)
+    }
 })
 
 module.exports = route;
