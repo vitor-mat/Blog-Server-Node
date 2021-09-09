@@ -3,11 +3,15 @@ const Posts = require("../models/posts");
 
 const route = require("express").Router();
 
-route.get("/Posts", async (req, res) => {
+
+//Rota para pegar todos os posts
+route.get("/posts", async (req, res) => {
     const myPosts = await Posts.findAll();
 
     res.send(myPosts)
 })
+
+
 
 route.post("/add", async (req, res) => {
     try{
@@ -42,7 +46,7 @@ route.put("/edit/:id", async (req, res) => {
             }
         })
 
-        res.send("Editado com sucess!")
+        res.send("Editado com sucesso!")
     }catch(error){
         res.send("Falha ao editar: "+error)
     }
