@@ -16,6 +16,10 @@ const Post = connection.define("post", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    acessos:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     title:{
         type: DataTypes.STRING,
         allowNull: false,
