@@ -18,19 +18,23 @@ route.post("/new-access", async (req, res) => {
         const validationAccess= await siteAccess.findAll()
 
         if(validationAccess[0].dataValues.allAccess > 0){
-            return console.log("Eu sou maior que 0")
+           const addAccess = await siteAccess.update({
+               allAccess: Number(validationAccess[0].dataValues.allAccess) + 1
+           }, {
+               where:{
+                   id: 1
+               }
+           })
         }
 
-        return ("Eu não deveria aparecer!")       
+        return res.send(validationAccess)       
     }catch(error){
-        
-        const validationAccess= await siteAccess.findAll()
 
         const newAccess = await siteAccess.create({
             allAccess: 1
         })
 
-        return console.log("agora estou pronto")
+        return res.send("contagem Iniciada!")
     }
 })
 
