@@ -14,17 +14,24 @@ route.get("/posts", async (req, res) => {
 
 //Rota para pegar um post em especifico
 route.post("/new-access", async (req, res) => {
-    const validationAccess= await siteAccess.findAll()
+    try{
+        const validationAccess= await siteAccess.findAll()
 
-    if(validationAccess){
-        const newAccess = siteAccess.create({
+        if(validationAccess[0].dataValues.allAccess > 0){
+            return console.log("Eu sou maior que 0")
+        }
+
+        return ("Eu não deveria aparecer!")       
+    }catch(error){
+        
+        const validationAccess= await siteAccess.findAll()
+
+        const newAccess = await siteAccess.create({
             allAccess: 1
         })
-        return res.send(validationAccess)
+
+        return console.log("agora estou pronto")
     }
-
-
-    return res.send("Agora que você começou, pode ir adicionando novos acessos")
 })
 
 route.post("/add", async (req, res) => {
