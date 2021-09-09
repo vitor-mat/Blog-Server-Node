@@ -1,5 +1,6 @@
 const connection = require("../database/db")
 const Posts = require("../models/posts");
+const siteAccess = require("../models/siteAccess");
 
 const route = require("express").Router();
 
@@ -11,7 +12,20 @@ route.get("/posts", async (req, res) => {
     res.send(myPosts)
 })
 
+//Rota para pegar um post em especifico
+route.post("/new-access", async (req, res) => {
+    const validationAccess= await siteAccess.findAll()
 
+    if(validationAccess){
+        const newAccess = siteAccess.create({
+            allAccess: 1
+        })
+        return res.send(validationAccess)
+    }
+
+
+    return res.send("Agora que você começou, pode ir adicionando novos acessos")
+})
 
 route.post("/add", async (req, res) => {
     try{

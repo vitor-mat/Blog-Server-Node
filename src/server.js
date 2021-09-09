@@ -3,7 +3,7 @@
     const Connection  = require("./database/db.js");
 
     try{
-        await Connection.sync();
+        await Connection.sync({ alter: true });
     }catch (error){
         console.log("Erro para inicializar o banco: " + error);
     }
