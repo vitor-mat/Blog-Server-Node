@@ -15,7 +15,7 @@ route.post("/new-access", async (req, res) => {
                allAccess: Number(validationAccess[0].dataValues.allAccess) + 1
            }, {
                where:{
-                   id: 1
+                   id: req.params.id
                }
            })
         }
@@ -23,8 +23,14 @@ route.post("/new-access", async (req, res) => {
         return res.send(validationAccess)       
     }catch(error){
 
+        const data = new Date();
+        const yearNow = data.getFullYear();
+        const monthNow = data.getMonth();
+
         const newAccess = await siteAccess.create({
-            allAccess: 1
+            allAccess: 1,
+            ano: Number(yearNow),
+            mes: Number(monthNow)
         })
 
         return res.send("contagem Iniciada!")
