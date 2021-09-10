@@ -1,6 +1,7 @@
 const connection = require("../database/db")
 const Posts = require("../models/posts");
 const siteAccess = require("../models/siteAccess");
+const allSiteAccess = require("../models/allSiteAccess");
 
 const route = require("express").Router();
 
@@ -8,6 +9,9 @@ const route = require("express").Router();
 //Rota para registrar um acesso ao site (essa rota precisa ter metodos cquebrados tá com muita responsabilidade)
 route.post("/new-access", async (req, res) => {
     try{
+
+        //Registro acessos por mes e ano
+
         const data = new Date();
         const yearNow = data.getFullYear();
         const monthNow = data.getMonth();
@@ -19,9 +23,9 @@ route.post("/new-access", async (req, res) => {
             }
         })
 
-        if(validationAccess[0].dataValues.allAccess){
+        if(validationAccess[0].dataValues.seasonAccess){
             const addAccess = await siteAccess.update({
-                allAccess: Number(validationAccess[0].dataValues.allAccess) + 1
+                seasonAccess: Number(validationAccess[0].dataValues.seasonAccess) + 1
             }, {
                 where:{
                     ano: yearNow,
@@ -31,16 +35,52 @@ route.post("/new-access", async (req, res) => {
         }
 
         return res.send(validationAccess)       
+    }catch{
+
+        try{
+            const data = new Date();
+            const yearNow = data.getFullYear();
+            const monthNow = data.getMonth();
+
+            const newAccess = await siteAccess.create({
+                seasonAccess: 1,
+                ano: Number(yearNow),
+                mes: Number(monthNow)
+            })
+
+            return res.send("contagem Iniciada!")
+        }catch(err){
+            console.log(err)
+        }
+
+    }
+})
+
+route.post("/new-geral-access", async (req, res) => {
+    try{
+
+        const validationGeralAccess= await allSiteAccess.findAll({
+            where:{
+                id: 1
+            }
+        })
+
+        if(validationGeralAccess[0].dataValues.allAccess > 0){
+            const addAccess = await allSiteAccess.update({
+                allAccess: Number(validationGeralAccess[0].dataValues.allAccess) + 1
+            }, {
+                where:{
+                    id: 1
+                }
+            })
+        }
+
+        return res.send(validationGeralAccess)    
+
     }catch(error){
-
-        const data = new Date();
-        const yearNow = data.getFullYear();
-        const monthNow = data.getMonth();
-
-        const newAccess = await siteAccess.create({
+        
+        const newAccess = await allSiteAccess.create({
             allAccess: 1,
-            ano: Number(yearNow),
-            mes: Number(monthNow)
         })
 
         return res.send("contagem Iniciada!")
@@ -49,9 +89,14 @@ route.post("/new-access", async (req, res) => {
 
 //Rota para pegar o numero de acessos ao site
 route.get("/all-access", async (rec, res) => {
-    const allAccess = await siteAccess.findAll()
+    
+    const allAccess = await siteAccess.findAll();
+    const allAccessGeral = await allSiteAccess.findAll();
 
-    res.send(allAccess)
+    res.send({
+        allAccess,
+        allAccessGeral
+    })
 })
 
 //Rota para pegar todos os posts

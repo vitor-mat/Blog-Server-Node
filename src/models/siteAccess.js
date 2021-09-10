@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const connection = require("../database/db.js");
 
 const siteAccess = connection.define("siteAccess", {
-    allAccess:{
+    seasonAccess:{
         type: DataTypes.INTEGER,
         allowNull: true
     },
