@@ -5,19 +5,29 @@ const siteAccess = require("../models/siteAccess");
 const route = require("express").Router();
 
 
-//Rota para registrar um acesso ao site
+//Rota para registrar um acesso ao site (essa rota precisa ter metodos cquebrados tá com muita responsabilidade)
 route.post("/new-access", async (req, res) => {
     try{
-        const validationAccess= await siteAccess.findAll()
+        const data = new Date();
+        const yearNow = data.getFullYear();
+        const monthNow = data.getMonth();
 
-        if(validationAccess[0].dataValues.allAccess > 0){
-           const addAccess = await siteAccess.update({
-               allAccess: Number(validationAccess[0].dataValues.allAccess) + 1
-           }, {
-               where:{
-                   id: req.params.id
-               }
-           })
+        const validationAccess= await siteAccess.findAll({
+            where:{
+                ano: yearNow,
+                mes: monthNow
+            }
+        })
+
+        if(validationAccess[0].dataValues.allAccess){
+            const addAccess = await siteAccess.update({
+                allAccess: Number(validationAccess[0].dataValues.allAccess) + 1
+            }, {
+                where:{
+                    ano: yearNow,
+                    mes: monthNow
+                }
+            })
         }
 
         return res.send(validationAccess)       
@@ -39,11 +49,7 @@ route.post("/new-access", async (req, res) => {
 
 //Rota para pegar o numero de acessos ao site
 route.get("/all-access", async (rec, res) => {
-    const allAccess = await siteAccess.findAll({
-        where:{
-            id: 1
-        }
-    })
+    const allAccess = await siteAccess.findAll()
 
     res.send(allAccess)
 })
