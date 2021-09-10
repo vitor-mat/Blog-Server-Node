@@ -5,6 +5,14 @@ const siteAccess = connection.define("siteAccess", {
     allAccess:{
         type: DataTypes.INTEGER,
         allowNull: true
+    },
+    ano:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    mes:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
 })
 
