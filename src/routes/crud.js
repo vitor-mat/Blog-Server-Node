@@ -88,15 +88,11 @@ route.post("/new-geral-access", async (req, res) => {
 })
 
 //Rota para pegar o numero de acessos ao site
-route.get("/all-access", async (rec, res) => {
-    
-    const allAccess = await siteAccess.findAll();
+route.get("/site-access", async (rec, res) => {
+
     const allAccessGeral = await allSiteAccess.findAll();
 
-    res.send({
-        allAccess,
-        allAccessGeral
-    })
+    res.send(allAccessGeral)
 })
 
 //Rota para pegar todos os posts
@@ -185,6 +181,16 @@ route.post("/new-post-access/:id", async (req, res) => {
     }catch(err){
         console.log(err)
     }
+})
+
+route.post("/add-post-access/:id", async (req, res) => {
+    const addPostAccess = Posts.update({
+        acessos: req.body.acessos
+    },{
+        where:{
+            id: req.params.id
+        }
+    })
 })
 
 module.exports = route;
