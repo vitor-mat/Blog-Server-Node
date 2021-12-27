@@ -26,10 +26,10 @@ Blog App Api se trata da api rest que permite a criação, edição, remoção e
 
 ### Rotas get
 
-|`/site-access`||Retorna todos os acessos ao site|
+| `/site-access` || Retorna todos os acessos ao site |
 
 ![get_site_access_data_image](./readme_files/get_site_access.png)
 
-|`/posts`||Retorna um array com todos os posts, onde cada post é um objeto|
+| `/posts` || Retorna um array com todos os posts, onde cada post é um objeto |
 
 ![get_site_posts_data_image](./readme_files/get_site_posts.png)
