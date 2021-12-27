@@ -2,7 +2,7 @@
 
 Blog App Api se trata da api rest que permite a criação, edição, remoção e busca no banco de dados, dos posts de uma apliação de blog de nome semelhante (blog app) que também pode ser encontrada neste github.
 
-![NodeJs](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white) ![Sqlite](https://img.shields.io/badge/-Axios-purplehttps://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white) ![Cors](https://img.shields.io/badge/-Cors-coral)
+![NodeJs](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white) ![Sqlite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white) ![Cors](https://img.shields.io/badge/-Cors-coral)
 ## SUMÁRIO
 
 - Status
