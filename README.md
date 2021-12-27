@@ -26,12 +26,23 @@ Blog App Api se trata da api rest que permite a criação, edição, remoção e
 
 ### Rotas get
 
-| /site-access | Retorna todos os acessos ao site |
+| EndPoint | Funcionalidade |
 | - | - |
+| /site-access | Retorna todos os acessos ao site |
 
 ![get_site_access_data_image](./readme_files/get_site_access.png)
 
-| /posts | Retorna um array com todos os posts, onde cada post é um objeto |
+| EndPoint | Funcionalidade |
 | - | - |
+| /posts | Retorna um array com todos os posts, onde cada post é um objeto |
 
 ![get_site_posts_data_image](./readme_files/get_site_posts.png)
+
+### Rotas post
+
+| EndPoint | Funcionalidade |
+| - | - |
+| /new-access | Cadastra os acessos divididos pelos anos e cada ano divido pelos meses |
+| /new-geral-access | Cadastra cada acesso ao site, representa todos os acessos que o site já teve. |
+| /add | Cadastra os dados dos posts |
+| /new-post-access/:id | Atualiza o número de acessos a um determinado post |

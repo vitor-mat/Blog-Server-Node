@@ -183,14 +183,5 @@ route.post("/new-post-access/:id", async (req, res) => {
     }
 })
 
-route.post("/add-post-access/:id", async (req, res) => {
-    const addPostAccess = Posts.update({
-        acessos: req.body.acessos
-    },{
-        where:{
-            id: req.params.id
-        }
-    })
-})
 
 module.exports = route;
