@@ -6,8 +6,8 @@ Blog App Api se trata da api rest que permite a criação, edição, remoção e
 ## SUMÁRIO
 
 - Status
-- Endpoint
-- Features
+- Url
+- Features e EndPoints
 - Demonstração da Aplicação
 - Como Rodar a Aplicação
 - Pré Requisitos Para Rodar a Aplicação
@@ -18,18 +18,18 @@ Blog App Api se trata da api rest que permite a criação, edição, remoção e
 
 ✨Concluído ✨
 
-## Endpoint
+## Url
 
 - [https://bloogappserver.herokuapp.com/](https://bloogappserver.herokuapp.com/)
 
-## Features
+## Features e EndPoints
 
 ### Rotas get
 
-| `/site-access` || Retorna todos os acessos ao site |
+| /site-access || Retorna todos os acessos ao site |
 
 ![get_site_access_data_image](./readme_files/get_site_access.png)
 
-| `/posts` || Retorna um array com todos os posts, onde cada post é um objeto |
+| /posts || Retorna um array com todos os posts, onde cada post é um objeto |
 
 ![get_site_posts_data_image](./readme_files/get_site_posts.png)
